@@ -8,8 +8,8 @@ function getComputerChoice() {
 function getPlayerChoice() {
   const initialChoice = prompt("Choose Rock, Paper, or Scissors"); // Initial choice that user inputs, no styling
   const lowerCase = (initialChoice.slice(1, initialChoice.length)).toLowerCase(); // Makes all letters except for first letter lower case
-  const upperFirstChar = initialChoice.charAt(0); // Makes first letter upper case
-  const playerChoice = upperFirstChar + lowerCase; // Combines upper case letter and rest of lower case letters into 1 string
+  const upperFirstChar = (initialChoice.charAt(0)).toUpperCase(); // Makes first letter upper case
+  const playerChoice = upperFirstChar.concat(lowerCase); // Combines upper case letter and rest of lower case letters into 1 string
   return playerChoice; // returns complete string 
 }
 
@@ -32,9 +32,9 @@ function playRound(playerSelection, computerSelection) {
   if (result == "Tie") {
     return "It's a Tie!";
   } else if (result == "Player") {
-    return `You Win! ${playerSelection} beats ${computerSelection}`;
+    return `You Win! ${playerSelection} (Your Move) beats ${computerSelection} (Computer's Move)`;
   } else {
-    return `You Lose! ${computerSelection} beats ${playerSelection}`;
+    return `You Lose! ${computerSelection} (Computer's Move) beats ${playerSelection} (Your Move)`;
   }
 }
 
