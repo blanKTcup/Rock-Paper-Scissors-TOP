@@ -1,28 +1,24 @@
-function computerChoice() {
-  let computerSelection = Math.floor(Math.random() * 3) + 1; // Random # Gen from 1-3
-  if (computerSelection === 1) {
-    return "rock";
-  } else if (computerSelection === 2) {
-    return "paper";
-  } else {
-    return "scissors";
-  }
+const choices = ["rock", "paper", "scissors"];
+
+function getComputerChoice() {
+  const computerSelection = choices[Math.floor(Math.random() * 3)]; // Random # Gen from 0-2
+  return computerSelection;
 }
 
-function playRound(playerSelection, computerChoice) {
-  let playerSelection = prompt("Rock, paper, or scissors?");
+function playRound(playerSelection, computerSelection) {
+  let playerSelection = prompt("Rock, paper, or scissors");
   playerSelection.toLowerCase();
-  if (playerSelection === "rock" && computerChoice === "scissors") {
+  if (playerSelection === "rock" && computerSelection === "scissors") {
     return "You Win! Rock beats Scissors";
-  } else if (playerSelection === "paper" && computerChoice === "rock") {
+  } else if (playerSelection === "paper" && computerSelection === "rock") {
     return "You Win! Paper beats Rock";
-  } else if (playerSelection === "scissors" && computerChoice === "paper") {
+  } else if (playerSelection === "scissors" && computerSelection === "paper") {
     return "You Win! Scissors beats Paper";
-  } else if (playerSelection === "rock" && computerChoice === "paper") {
+  } else if (playerSelection === "rock" && computerSelection === "paper") {
     return "You Lose! Paper beats Rock";
-  } else if (playerSelection === "scissors" && computerChoice === "rock") {
+  } else if (playerSelection === "scissors" && computerSelection === "rock") {
     return "You Lose! Rock beats Scissors";
-  } else if (playerSelection === "paper" && computerChoice === "scissors") {
+  } else if (playerSelection === "paper" && computerSelection === "scissors") {
     return "You Lose! Scissors beats Paper";
   } else {
     return "It's a Tie!"
@@ -35,6 +31,6 @@ function playGame() {
   }
 }
 
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(playRound(playerSelection, computerSelection));
+const playerSelection = "rock";
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
