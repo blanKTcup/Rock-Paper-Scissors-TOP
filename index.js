@@ -5,23 +5,33 @@ function getComputerChoice() {
   return computerSelection;
 }
 
-function playRound(playerSelection, computerSelection) {
-  let playerSelection = prompt("Rock, paper, or scissors");
+function getPlayerChoice() {
+  const playerSelection = prompt("Choose rock, paper, or scissors");
   playerSelection.toLowerCase();
-  if (playerSelection === "rock" && computerSelection === "scissors") {
-    return "You Win! Rock beats Scissors";
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-    return "You Win! Paper beats Rock";
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
-    return "You Win! Scissors beats Paper";
-  } else if (playerSelection === "rock" && computerSelection === "paper") {
-    return "You Lose! Paper beats Rock";
-  } else if (playerSelection === "scissors" && computerSelection === "rock") {
-    return "You Lose! Rock beats Scissors";
-  } else if (playerSelection === "paper" && computerSelection === "scissors") {
-    return "You Lose! Scissors beats Paper";
+  return playerSelection;
+}
+
+function checkWinner(getPlayerChoice, getComputerChoice) {
+  if (playerSelection == computerSelection) {
+    return "Tie";
+  } else if (
+    (playerSelection == "rock" && computerSelection == "scissors") || 
+    (playerSelection == "paper" && computerSelection == "rock") || 
+    (playerSelection == "scissors" && computerSelection == "paper")
+  ){
+    return "Player";
   } else {
-    return "It's a Tie!"
+    return "Computer";
+  }
+}
+
+function playRound(checkWinner) {
+  if (checkWinner == "Tie") {
+    return "It's a Tie!";
+  } else if (checkWinner == "Player") {
+    return `You Win! ${playerSelection} beats ${computerSelection}`;
+  } else {
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
   }
 }
 
@@ -30,7 +40,3 @@ function playGame() {
     playRound();
   }
 }
-
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
