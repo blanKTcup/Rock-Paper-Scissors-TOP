@@ -38,14 +38,14 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection)); // test if you can next function inside function instead of assigning it to a variable 
+function playGame() {
+  console.log("Welcome!");
+  for (let i = 0; i<=5; i++) {
+    const playerSelection = getPlayerChoice();
+    const computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+  console.log("Thanks for Playing!");
+}
 
-
-
-// function playGame() {
-//   for (let i = 0; i<=5; i++) {
-//     playRound();
-//   }
-// }
+playGame(); // test if you can next function inside function instead of assigning it to a variable 
