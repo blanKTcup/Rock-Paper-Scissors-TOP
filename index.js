@@ -1,7 +1,7 @@
-const choices = ["Rock", "Paper", "Scissors"];
+const computerChoices = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
-  const computerChoice = choices[Math.floor(Math.random() * 3)]; // Random # Gen from 0-2
+  const computerChoice = computerChoices[Math.floor(Math.random() * 3)]; // Random # Gen from 0-2
   return computerChoice;
 }
 
