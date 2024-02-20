@@ -1,16 +1,16 @@
-const computerChoices = ["Rock", "Paper", "Scissors"];
+const COMPUTER_CHOICES = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
-  const computerChoice = computerChoices[Math.floor(Math.random() * 3)]; // Random # Gen from 0-2
+  let computerChoice = COMPUTER_CHOICES[Math.floor(Math.random() * 3)]; // Random # Gen from 0-2
   return computerChoice;
 }
 
 function getPlayerChoice() {
-  const initialChoice = prompt("Choose Rock, Paper, or Scissors"); // Initial choice that user inputs, no styling
-  const lowerCase = (initialChoice.slice(1, initialChoice.length)).toLowerCase(); // Makes all letters except for first letter lower case
-  const upperFirstChar = (initialChoice.charAt(0)).toUpperCase(); // Makes first letter upper case
-  const playerChoice = upperFirstChar.concat(lowerCase); // Combines upper case letter and rest of lower case letters into 1 string
-  return playerChoice; // returns complete string 
+  let initialChoice = prompt("Choose Rock, Paper, or Scissors"); // Initial choice that user inputs, no styling
+  const LOWER_CASE = (initialChoice.slice(1, initialChoice.length)).toLowerCase(); // Makes all letters except for first letter lower case
+  const UPPER_1ST_CHAR = (initialChoice.charAt(0)).toUpperCase(); // Makes first letter upper case
+  const PLAYER_CHOICE = UPPER_1ST_CHAR.concat(LOWER_CASE); // Combines upper case letter and rest of lower case letters into 1 string
+  return PLAYER_CHOICE; // returns complete string 
 }
 
 function checkWinner(playerSelection, computerSelection) {
@@ -28,7 +28,7 @@ function checkWinner(playerSelection, computerSelection) {
 }
 
 function playRound(playerSelection, computerSelection) {
-  const result = checkWinner(playerSelection, computerSelection);
+  let result = checkWinner(playerSelection, computerSelection);
   if (result == "Tie") {
     return "This round is a tie!";
   } else if (result == "Player") {
@@ -44,8 +44,8 @@ function playGame() {
   console.log("Welcome!");
   console.log("-------------------------------------------------------")
   for (let i = 0; i < 5; i++) {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
+    let playerSelection = getPlayerChoice();
+    let computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
     console.log("-------------------------------------------------------"); // indicates new round
     if (checkWinner(playerSelection, computerSelection) == "Player") {
