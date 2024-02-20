@@ -30,21 +30,40 @@ function checkWinner(playerSelection, computerSelection) {
 function playRound(playerSelection, computerSelection) {
   const result = checkWinner(playerSelection, computerSelection);
   if (result == "Tie") {
-    return "It's a Tie!";
+    return "This round is a tie!";
   } else if (result == "Player") {
-    return `You Win! ${playerSelection} (Your Move) beats ${computerSelection} (Computer's Move)`;
+    return `You won this round! ${playerSelection} (Your Move) beats ${computerSelection} (Computer's Move)`;
   } else {
-    return `You Lose! ${computerSelection} (Computer's Move) beats ${playerSelection} (Your Move)`;
+    return `You lost this round! ${computerSelection} (Computer's Move) beats ${playerSelection} (Your Move)`;
   }
 }
 
 function playGame() {
+  let playerScore = 0;
+  let computerScore = 0;
   console.log("Welcome!");
-  for (let i = 0; i<=5; i++) {
+  console.log("-------------------------------------------------------")
+  for (let i = 0; i < 5; i++) {
     const playerSelection = getPlayerChoice();
     const computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
+    console.log("-------------------------------------------------------"); // indicates new round
+    if (checkWinner(playerSelection, computerSelection) == "Player") {
+      playerScore++;
+    } else if (checkWinner(playerSelection, computerSelection) == "Computer") {
+      computerScore++;
+    } 
   }
+  console.log("The game is over...")
+  
+  if (playerScore > computerScore) {
+    console.log("Luckily, you won the game!");
+  } else if (computerScore > playerScore) {
+    console.log("Unfortunately, you lost the game :(");
+  } else {
+    console.log("Surprisingly, this game is a tie!");
+  }
+  
   console.log("Thanks for Playing!");
 }
 
