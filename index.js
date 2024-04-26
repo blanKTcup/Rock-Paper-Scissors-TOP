@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-  
+  const headerEl = document.querySelector('header');
   const startBtnEl = document.querySelector('start');
   const rockEl = document.querySelector('rock');
   const paperEl = document.querySelector('paper');
@@ -80,8 +80,7 @@ function playGame() {
 }
 
 function startGame() {
-  const header = document.querySelector('header');
-  header.textContent = 'The Game Has Started! Good Luck!';
+  headerEl.textContent = 'The Game Has Started! Good Luck!';
   
   playGame();
 }
