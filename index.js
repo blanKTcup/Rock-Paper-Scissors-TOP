@@ -1,3 +1,20 @@
+window.addEventListener('DOMContentLoaded', (event) => {
+  
+  const startBtnEl = document.querySelector('start');
+  const rockEl = document.querySelector('rock');
+  const paperEl = document.querySelector('paper');
+  const scissorsEl = document.querySelector('scissors');
+  const resultsEL = document.querySelector('results');
+  // rockEl.addEventListener('click', playRound('Rock', computerSelection));
+  
+  // paperEl.addEventListener('click', playRound('Paper', computerSelection));
+  
+  // scissorsEl.addEventListener('click', playRound('Scissors', computerSelection));
+  if (startBtnEl) {
+    startBtnEl.addEventListener('click', startGame, false);
+  }
+});
+
 const COMPUTER_CHOICES = ["Rock", "Paper", "Scissors"];
 
 function getComputerChoice() {
@@ -41,30 +58,31 @@ function playRound(playerSelection, computerSelection) {
 function playGame() {
   let playerScore = 0;
   let computerScore = 0;
-  console.log("Welcome!");
-  console.log("-------------------------------------------------------")
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = getPlayerChoice();
+  for (let i = 0; i < 3; i++) {
     let computerSelection = getComputerChoice();
+    let playerSelection = getPlayerChoice();
     console.log(playRound(playerSelection, computerSelection));
-    console.log("-------------------------------------------------------"); // indicates new round
+     // indicates new round
     if (checkWinner(playerSelection, computerSelection) == "Player") {
       playerScore++;
     } else if (checkWinner(playerSelection, computerSelection) == "Computer") {
       computerScore++;
     } 
   }
-  console.log("The game is over...")
   
   if (playerScore > computerScore) {
-    console.log("Luckily, you won the game!");
+    resultsEL.textContent = "The game is over...Luckily, you won the game! Thanks for Playing!";
   } else if (computerScore > playerScore) {
-    console.log("Unfortunately, you lost the game :(");
+    resultsEL.textContent = "The game is over...Unfortunately, you lost the game :( Thanks for Playing!";
   } else {
-    console.log("Surprisingly, this game is a tie!");
+    resultsEL.textContent = "The game is over...Surprisingly, this game is a tie! Thanks for Playing!";
   }
-  
-  console.log("Thanks for Playing!");
 }
 
-playGame(); // test if you can next function inside function instead of assigning it to a variable 
+function startGame() {
+  const header = document.querySelector('header');
+  header.textContent = 'The Game Has Started! Good Luck!';
+  
+  playGame();
+}
+
