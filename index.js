@@ -1,17 +1,10 @@
 const headerEl = document.querySelector('.header');
-const startBtnEl = document.querySelector('.start');
 const rockEl = document.querySelector('.rock');
 const paperEl = document.querySelector('.paper');
 const scissorsEl = document.querySelector('.scissors');
 const resultsEL = document.querySelector('.results');
 const playerScoreEl = document.querySelector('.player-score');
 const computerScoreEl = document.querySelector('.computer-score');
-
-startBtnEl.addEventListener('click', startGame);
-
-function startGame() {
-	headerEl.textContent = 'The Game Has Started! Good Luck!';
-}
 
 const COMPUTER_CHOICES = ['Rock', 'Paper', 'Scissors'];
 
@@ -31,26 +24,24 @@ function playRound(playerSelection) {
     resultsEL.textContent = `This round is a tie! The Computer also chose ${playerSelection}`;
   } else if (result == 'Player') {
     resultsEL.textContent = `You won this round! ${playerSelection} (Your Move) beats ${computerSelection} (Computer's Move)`;
+    playerScoreEl.textContent = 
   } else {
     resultsEL.textContent = `You lost this round! ${computerSelection} (Computer's Move) beats ${playerSelection} (Your Move)`;
   }
 }
 
-// function playGame(playerSelection) {
-// 	let playerScore = 0;
-// 	let computerScore = 0;
-// 	for (let i = 0; i < 3; i++) {
-// 		let computerSelection = getComputerChoice();
-//     playRound(playerSelection, computerSelection);
-// 		// let playerSelection = getPlayerChoice();
-// 		// console.log(playRound(playerSelection, computerSelection));
-// 		// // indicates new round
-// 		if (checkWinner(playerSelection, computerSelection) == 'Player') {
-// 			playerScore++;
-// 		} else if (checkWinner(playerSelection, computerSelection) == 'Computer') {
-// 			computerScore++;
-// 		}
-// 	}
+function playGame() {
+	let playerScore = 0;
+	let computerScore = 0;
+	for (let i = 0; i < 5; i++) {
+		let computerSelection = getComputerChoice();
+		if (checkWinner(playerSelection, computerSelection) == 'Player') {
+			playerScore++;
+		} else if (checkWinner(playerSelection, computerSelection) == 'Computer') {
+			computerScore++;
+		}
+	}
+}
 
 
 	function checkWinner(playerSelection, computerSelection) {
